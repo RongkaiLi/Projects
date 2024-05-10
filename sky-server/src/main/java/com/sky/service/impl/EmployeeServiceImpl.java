@@ -36,6 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param employeeLoginDTO
      * @return
      */
+    @Override
     public Employee login(EmployeeLoginDTO employeeLoginDTO) {
         String username = employeeLoginDTO.getUsername();
         String password = employeeLoginDTO.getPassword();
@@ -96,6 +97,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return {@link com.sky.result.PageResult}
      * @throws
      */
+    @Override
     public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO){
         //开始分页查询（使用插件）
         PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
@@ -122,6 +124,37 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .status(status)
                 .id(id)
                 .build();
+        employeeMapper.update(employee);
+    }
+
+    /**
+     *  根据id查询员工信息
+     * @author lrk
+     * @param id
+     * @return {@link com.sky.entity.Employee}
+     * @throws
+     */
+    @Override
+    public Employee getById(long id) {
+        Employee employee = employeeMapper.getById(id);
+        employee.setPassword("****");//把从数据库中获取的密码覆盖，增强安全性
+        return employee;
+    }
+
+    /**
+     *  编辑员工信息
+     * @author lrk
+     * @param employeeDTO
+     * @throws
+     */
+    @Override
+    public void update(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO,employee);
+
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(BaseContext.getCurrentId());
+
         employeeMapper.update(employee);
     }
 }
