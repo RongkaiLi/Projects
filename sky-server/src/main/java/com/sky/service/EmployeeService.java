@@ -25,4 +25,13 @@ public interface EmployeeService {
      * @throws 
      */
     PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     *  启用禁用员工账号
+     * @author lrk
+     * @param status
+     * @param id
+     * @throws 
+     */
+    void startOrStop(Integer status, long id);
 }

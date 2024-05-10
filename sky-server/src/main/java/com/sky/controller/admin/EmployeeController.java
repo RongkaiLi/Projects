@@ -87,5 +87,21 @@ public class EmployeeController {
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
     }
+/**
+ *  启用禁用员工账号
+ * @author lrk
+ * @param status
+ * @param id
+ * @return {@link com.sky.result.Result}
+ * @throws
+ */
 
+    //返回值Result的泛型针对查询操作而添加（因为要返回data）
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用员工账号")
+    public Result startOrStop(@PathVariable Integer status,long id){
+        log.info("启用禁用员工账号：{},{}",status,id);
+        employeeService.startOrStop(status,id);
+        return Result.success();
+    }
 }

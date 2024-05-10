@@ -36,4 +36,12 @@ public interface EmployeeMapper {
      */
     //动态sql使用动态标签，不使用注解，将sql写到映射配置文件中
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     *  根据主键动态修改属性
+     * @author lrk
+     * @param employee
+     * @throws
+     */
+    void update(Employee employee);
 }
