@@ -4,18 +4,18 @@ sky:
     host: localhost
     port: 3306
     database: sky_take_out
-    username: root
-    password: 1234
+    username: ****
+    password: ****
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: LTAI5tPeFLzsPPT8gG3LPW64
-    access-key-secret: U6k1brOZ8gaOIXv3nXbulGTUzy6Pd7
+    access-key-id: ****
+    access-key-secret: ****
     bucket-name: sky-itcast
   redis:
     host: localhost
     port: 6379
-    password: 1234
-    database: 0
+    password: ****
+    database: ****
   wechat:
-    appid: wx96adf7568cef28de
-    secret: faa3b863849d2e4540cc5eb24b4b31e7
+    appid: ****
+    secret: ****
